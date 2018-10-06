@@ -6,7 +6,7 @@ class Maze:
     RED = (255, 0, 0)
     BRICK_SIZE = 10
 
-    def __init__(self, screen, mazefile, brickfile, portalfile, shieldfile, pointfile):
+    def __init__(self, screen, mazefile, brickfile):
         self.screen = screen
         self.filename = mazefile
         with open(self.filename, 'r') as f:
@@ -30,7 +30,7 @@ class Maze:
             row = self.rows[nrow]
             for ncol in range(len(row)):
                 col = row[ncol]
-                if col == 'X':
+                if col == 'W':
                     self.bricks.append(pygame.Rect(ncol * dx, nrow * dy, w, h))
 
     def blitme(self):

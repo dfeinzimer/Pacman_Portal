@@ -12,7 +12,7 @@ class Game:
         pygame.display.set_caption("Pacman Portal")
 
         self.maze = Maze(self.screen, mazefile='pacmap.txt',
-                         brickfile='brick.png', portalfile='brick.png', shieldfile='brick.png', pointfile='brick.png')
+                         brickfile='brick.png')
 
     def __str__(self): return 'Game(Pacman Portal), maze=' + str(self.maze) + ')'
 
