@@ -1,6 +1,6 @@
 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 W_____________________WW_____________________W
-W_____________________WW_____________________W
+W___RRRRRRRRRRRRRRR___WW___RRRRRRRRRRRRRRR___W
 W_____________________WW_____________________W
 W___WWWWW___WWWWWWW___WW___WWWWWWW___WWWWW___W
 W___WWWWW___WWWWWWW___WW___WWWWWWW___WWWWW___W
@@ -16,3 +16,41 @@ W___________WW________WW________WW___________W
 WWWWWWWWW___WWWWWWW___WW___WWWWWWW___WWWWWWWWW
         W___WWWWWWW___WW___WWWWWWW___W
         W___WW__________________WW___W
+        W___WW__________________WW___W
+        W___WW__________________WW___W
+        W___WW___WWWWWWWWWWWW___WW___W
+WWWWWWWWW___WW___W          W___WW___WWWWWWWWW
+_________________W          W_________________
+_________________W          W_________________
+_________________W          W_________________
+WWWWWWWWW___WW___W          W___WW___WWWWWWWWW
+        W___WW___WWWWWWWWWWWW___WW___W
+        W___WW__________________WW___W
+        W___WW__________________WW___W
+        W___WW__________________WW___W
+        W___WW___WWWWWWWWWWWW___WW___W
+WWWWWWWWW___WW___WWWWWWWWWWWW___WW___WWWWWWWWW
+W_____________________WW_____________________W
+W_____________________WW_____________________W
+W_____________________WW_____________________W
+W___WWWWW___WWWWWWW___WW___WWWWWWW___WWWWW___W
+W___WWWWW___WWWWWWW___WW___WWWWWWW___WWWWW___W
+W______WW____________________________WW______W
+W______WW____________________________WW______W
+W______WW____________________________WW______W
+WWWW___WW___WW____WWWWWWWWWWW___WW___WW___WWWW
+WWWW___WW___WW____WWWWWWWWWWW___WW___WW___WWWW
+W___________WW________WW________WW___________W
+W___________WW________WW________WW___________W
+W___________WW________WW________WW___________W
+W___WWWWWWWWWWWWWWW___WW___WWWWWWWWWWWWWWW___W
+W___WWWWWWWWWWWWWWW___WW___WWWWWWWWWWWWWWW___W
+W____________________________________________W
+W____________________________________________W
+W____________________________________________W
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+
+
+
+
+
