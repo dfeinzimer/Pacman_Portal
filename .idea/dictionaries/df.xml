@@ -4,6 +4,8 @@
       <w>blit</w>
       <w>blitme</w>
       <w>brickfile</w>
+      <w>centerx</w>
+      <w>centery</w>
       <w>deltax</w>
       <w>deltay</w>
       <w>eloop</w>

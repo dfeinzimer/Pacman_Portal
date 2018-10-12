@@ -24,13 +24,13 @@ class Game:
 
     def play(self):
         eloop = EventLoop(finished=False)
-
         while not eloop.finished:
             eloop.check_events()
             self.update_screen()
 
     def update_screen(self):
         self.maze.blitme()
+        self.pacman.blitme()
         pygame.display.flip()
 
 

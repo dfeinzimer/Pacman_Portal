@@ -38,16 +38,16 @@ class Maze:
         powerpill_r = self.pill.rect
         powerpill_w, powerpill_h = powerpill_r.width, powerpill_r.height
 
-        for num_rows in range(len(self.rows)):
-            row = self.rows[num_rows]
+        for num_row in range(len(self.rows)):
+            row = self.rows[num_row]
             for num_cols in range(len(row)):
                 location = row[num_cols]
                 if location == 'W':
-                    self.bricks.append(pygame.Rect(num_cols * dx, num_rows * dy, brick_w, brick_h))
+                    self.bricks.append(pygame.Rect(num_cols * dx, num_row * dy, brick_w, brick_h))
                 if location == 'R':
-                    self.pills.append(pygame.Rect(num_cols * dx, num_rows * dy, pill_w, pill_h))
+                    self.pills.append(pygame.Rect(num_cols * dx, num_row * dy, pill_w, pill_h))
                 if location == 'P':
-                    self.powerpills.append(pygame.Rect(num_cols * dx, num_rows * dy, powerpill_w, powerpill_h))
+                    self.powerpills.append(pygame.Rect(num_cols * dx, num_row * dy, powerpill_w, powerpill_h))
 
     def blitme(self):
         for rect in self.bricks:
