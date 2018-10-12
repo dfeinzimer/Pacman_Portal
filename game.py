@@ -4,15 +4,18 @@ from maze import Maze
 
 
 class Game:
-    BLACK  = (0, 0, 0)
+    BLACK = (0, 0, 0)
 
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((460, 510))
         pygame.display.set_caption("Pacman Portal")
 
-        self.maze = Maze(self.screen, mazefile='pacmap.txt',
-                         brickfile='brick.png')
+        self.maze = Maze(self.screen,
+                         mazefile='pacmap.txt',
+                         brickfile='brick.png',
+                         pillfile='/pill/pill_regular.png',
+                         powerpillfile='/pill/pill_power.png')
 
     def __str__(self): return 'Game(Pacman Portal), maze=' + str(self.maze) + ')'
 
