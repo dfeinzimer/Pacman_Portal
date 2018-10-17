@@ -24,6 +24,7 @@ class Pacman(Sprite):
 
     def blitme(self):
         if pygame.time.get_ticks() - self.last_update_time > 100:
+            self.screen.fill((0, 0, 0))
             # Update mouth position
             if self.image_mode == 0:
                 self.image = pygame.image.load('images/pacman/pac1.png')
@@ -38,15 +39,19 @@ class Pacman(Sprite):
                 self.image = pygame.image.load('images/pacman/pac0.png')
                 self.image_mode = 0
 
-            # Update cardinal position
+            # Update cardinal orientation
             if self.cardinal == "North":
                 self.image = pygame.transform.rotate(self.image, 90)
+                self.rect.centery -= 1 * 3
             elif self.cardinal == "East":
                 self.image = pygame.transform.rotate(self.image, 0)
+                self.rect.centerx += 1 * 3
             elif self.cardinal == "South":
                 self.image = pygame.transform.rotate(self.image, 270)
+                self.rect.centery += 1 * 3
             elif self.cardinal == "West":
                 self.image = pygame.transform.rotate(self.image, 180)
+                self.rect.centerx -= 1 * 3
 
             self.last_update_time = pygame.time.get_ticks()
             self.screen.blit(self.image, self.rect)
