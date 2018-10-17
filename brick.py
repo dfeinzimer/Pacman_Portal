@@ -8,7 +8,7 @@ class Brick(Sprite):
         super(Brick, self).__init__()
         self.screen = screen
         self.screen_rect = screen.get_rect()
-        self.size = 30
+        self.size = 10
 
         self.image = pygame.image.load('images/brick.png')
         self.rect = self.image.get_rect()

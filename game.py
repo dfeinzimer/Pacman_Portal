@@ -14,7 +14,6 @@ class Game:
 
         self.maze = Maze(self.screen,
                          mazefile='pacmap.txt',
-                         brickfile='brick.png',
                          pillfile='pill/pill_regular.png',
                          powerpillfile='pill/pill_power.png')
 

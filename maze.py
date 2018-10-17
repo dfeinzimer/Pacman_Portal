@@ -1,11 +1,13 @@
 from imagerect import ImageRect
 import pygame
+from pygame.sprite import Group
+from brick import Brick
 
 
 class Maze:
     SQUARE_SIZE = 10
 
-    def __init__(self, screen, mazefile, brickfile, pillfile, powerpillfile):
+    def __init__(self, screen, mazefile, pillfile, powerpillfile):
         self.screen = screen
         self.filename = mazefile
         self.deltax = self.deltay = Maze.SQUARE_SIZE
@@ -13,8 +15,7 @@ class Maze:
         with open(self.filename, 'r') as f:
             self.rows = f.readlines()
 
-        self.bricks = []
-        self.brick = ImageRect(screen, brickfile, sz, sz)
+        self.bricks = Group()
 
         self.pills = []
         self.pill = ImageRect(screen, pillfile, sz, sz)
@@ -22,15 +23,12 @@ class Maze:
         self.powerpills = []
         self.powerpill = ImageRect(screen, powerpillfile, sz, sz)
 
-        self.build()
+        self.build(screen)
 
     def __str__(self): return 'maze(' + self.filename + ')'
 
-    def build(self):
+    def build(self, screen):
         dx, dy = self.deltax, self.deltay
-
-        brick_rect = self.brick.rect
-        brick_width, brick_height = brick_rect.width, brick_rect.height
 
         pill_rect = self.pill.rect
         pill_width, pill_height = pill_rect.width, pill_rect.height
@@ -38,20 +36,24 @@ class Maze:
         powerpill_rect = self.pill.rect
         powerpill_width, powerpill_height = powerpill_rect.width, powerpill_rect.height
 
-        for num_row in range(len(self.rows)):
-            row = self.rows[num_row]
-            for num_cols in range(len(row)):
-                location = row[num_cols]
+        for number_of_rows in range(len(self.rows)):
+            row = self.rows[number_of_rows]
+            for number_of_columns in range(len(row)):
+                location = row[number_of_columns]
                 if location == 'W':
-                    self.bricks.append(pygame.Rect(num_cols * dx, num_row * dy, brick_width, brick_height))
+                    brick = Brick(screen)
+                    brick.rect.x = number_of_columns * dx
+                    brick.rect.y = number_of_rows * dy
+                    self.bricks.add(brick)
                 if location == 'R':
-                    self.pills.append(pygame.Rect(num_cols * dx, num_row * dy, pill_width, pill_height))
+                    self.pills.append(pygame.Rect(number_of_columns * dx, number_of_rows * dy, pill_width, pill_height))
                 if location == 'P':
-                    self.powerpills.append(pygame.Rect(num_cols * dx, num_row * dy, powerpill_width, powerpill_height))
+                    self.powerpills.append(pygame.Rect(number_of_columns * dx, number_of_rows * dy,
+                                           powerpill_width, powerpill_height))
 
     def blitme(self):
-        for rect in self.bricks:
-            self.screen.blit(self.brick.image, rect)
+        for brick in self.bricks:
+            self.screen.blit(brick.image, brick.rect)
         for rect in self.pills:
             self.screen.blit(self.pill.image, rect)
         for rect in self.powerpills:
