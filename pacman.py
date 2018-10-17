@@ -50,4 +50,3 @@ class Pacman(Sprite):
 
             self.last_update_time = pygame.time.get_ticks()
             self.screen.blit(self.image, self.rect)
-
