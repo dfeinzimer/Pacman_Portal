@@ -32,6 +32,5 @@ class Game:
         pygame.display.flip()
 
 
-
 game = Game()
 game.play()

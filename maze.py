@@ -1,7 +1,7 @@
-from imagerect import ImageRect
-import pygame
 from pygame.sprite import Group
 from brick import Brick
+from pill import Pill
+from pill import PowerPill
 
 
 class Maze:
@@ -17,11 +17,9 @@ class Maze:
 
         self.bricks = Group()
 
-        self.pills = []
-        self.pill = ImageRect(screen, pillfile, sz, sz)
+        self.pills = Group()
 
-        self.powerpills = []
-        self.powerpill = ImageRect(screen, powerpillfile, sz, sz)
+        self.powerpills = Group()
 
         self.build(screen)
 
@@ -29,12 +27,6 @@ class Maze:
 
     def build(self, screen):
         dx, dy = self.deltax, self.deltay
-
-        pill_rect = self.pill.rect
-        pill_width, pill_height = pill_rect.width, pill_rect.height
-
-        powerpill_rect = self.pill.rect
-        powerpill_width, powerpill_height = powerpill_rect.width, powerpill_rect.height
 
         for number_of_rows in range(len(self.rows)):
             row = self.rows[number_of_rows]
@@ -46,15 +38,20 @@ class Maze:
                     brick.rect.y = number_of_rows * dy
                     self.bricks.add(brick)
                 if location == 'R':
-                    self.pills.append(pygame.Rect(number_of_columns * dx, number_of_rows * dy, pill_width, pill_height))
+                    pill = Pill(screen)
+                    pill.rect.x = number_of_columns * dx
+                    pill.rect.y = number_of_rows * dy
+                    self.pills.add(pill)
                 if location == 'P':
-                    self.powerpills.append(pygame.Rect(number_of_columns * dx, number_of_rows * dy,
-                                           powerpill_width, powerpill_height))
+                    powerpill = PowerPill(screen)
+                    powerpill.rect.x = number_of_columns * dx
+                    powerpill.rect.y = number_of_rows * dy
+                    self.powerpills.add(powerpill)
 
     def blitme(self):
         for brick in self.bricks:
             self.screen.blit(brick.image, brick.rect)
-        for rect in self.pills:
-            self.screen.blit(self.pill.image, rect)
-        for rect in self.powerpills:
-            self.screen.blit(self.powerpill.image, rect)
+        for pill in self.pills:
+            self.screen.blit(pill.image, pill.rect)
+        for powerpill in self.powerpills:
+            self.screen.blit(powerpill.image, powerpill.rect)

@@ -42,16 +42,16 @@ class Pacman(Sprite):
             # Update cardinal orientation
             if self.cardinal == "North":
                 self.image = pygame.transform.rotate(self.image, 90)
-                self.rect.centery -= 1 * 3
+                self.rect.y -= 1 * 3
             elif self.cardinal == "East":
                 self.image = pygame.transform.rotate(self.image, 0)
-                self.rect.centerx += 1 * 3
+                self.rect.x += 1 * 3
             elif self.cardinal == "South":
                 self.image = pygame.transform.rotate(self.image, 270)
-                self.rect.centery += 1 * 3
+                self.rect.y += 1 * 3
             elif self.cardinal == "West":
                 self.image = pygame.transform.rotate(self.image, 180)
-                self.rect.centerx -= 1 * 3
+                self.rect.x -= 1 * 3
 
             self.last_update_time = pygame.time.get_ticks()
             self.screen.blit(self.image, self.rect)
