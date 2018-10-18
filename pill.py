@@ -21,3 +21,5 @@ class PowerPill(Pill):
 
     def __init__(self, screen):
         Pill.__init__(self, screen)
+        self.image = pygame.image.load('images/pill/pill_power.png')
+        self.rect = self.image.get_rect()

@@ -2,6 +2,7 @@ from pygame.sprite import Group
 from brick import Brick
 from pill import Pill
 from pill import PowerPill
+import pygame
 
 
 class Maze:
@@ -49,6 +50,16 @@ class Maze:
                     powerpill.rect.x = number_of_columns * dx
                     powerpill.rect.y = number_of_rows * dy
                     self.powerpills.add(powerpill)
+
+    def check_pac_pills(self, pacman, settings):
+
+        if pygame.sprite.spritecollideany(pacman, self.pills):
+            for _ in pygame.sprite.spritecollide(pacman, self.pills, True):
+                settings.score_current += settings.pill_regular_value
+
+        if pygame.sprite.spritecollideany(pacman, self.powerpills):
+            for _ in pygame.sprite.spritecollide(pacman, self.powerpills, True):
+                settings.score_current += settings.pill_power_value
 
     def blitme(self):
         for brick in self.bricks:
