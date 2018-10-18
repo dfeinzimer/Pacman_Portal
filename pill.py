@@ -19,5 +19,5 @@ class Pill(Sprite):
 
 class PowerPill(Pill):
 
-    def __init__(self,screen):
+    def __init__(self, screen):
         Pill.__init__(self, screen)

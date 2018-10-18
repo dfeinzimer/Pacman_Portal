@@ -5,20 +5,22 @@ from pill import PowerPill
 
 
 class Maze:
-    SQUARE_SIZE = 10
 
-    def __init__(self, screen, mazefile, pillfile, powerpillfile):
+    def __init__(self, screen, mazefile):
+        # Define maze screen
         self.screen = screen
+
+        self.SQUARE_SIZE = 10
+
+        # Read maze layout
         self.filename = mazefile
-        self.deltax = self.deltay = Maze.SQUARE_SIZE
-        sz = Maze.SQUARE_SIZE
         with open(self.filename, 'r') as f:
             self.rows = f.readlines()
 
+        self.deltax = self.deltay = self.SQUARE_SIZE
+
         self.bricks = Group()
-
         self.pills = Group()
-
         self.powerpills = Group()
 
         self.build(screen)

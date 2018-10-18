@@ -11,10 +11,7 @@ class Game:
         self.screen = pygame.display.set_mode((460, 510))
         pygame.display.set_caption("Pacman Portal")
 
-        self.maze = Maze(self.screen,
-                         mazefile='pacmap.txt',
-                         pillfile='pill/pill_regular.png',
-                         powerpillfile='pill/pill_power.png')
+        self.maze = Maze(self.screen, mazefile='pacmap.txt')
 
         self.pacman = Pacman(self.screen)
 
