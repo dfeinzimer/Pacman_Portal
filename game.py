@@ -33,7 +33,7 @@ class Game:
 
     def update_screen(self):
         self.screen.fill((0, 0, 0))
-        self.maze.blitme()
+        self.maze.blitme(self.settings)
         self.pacman.blitme(self.settings)
         self.dashboard.blitme(self.settings)
         pygame.display.flip()

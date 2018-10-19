@@ -65,11 +65,37 @@ class Maze:
                     powerpill.rect.y = number_of_rows * dy
                     self.powerpills.add(powerpill)
 
+    def check_ghost_conditions(self, settings):
+        for ghost in self.ghosts:
+            if pygame.sprite.spritecollideany(ghost, self.bricks):
+                if ghost.cardinal == "North":
+                    ghost.move_south(settings)
+
+                if ghost.cardinal == "South":
+                    ghost.move_north(settings)
+
+                if ghost.cardinal == "East":
+                    ghost.move_west(settings)
+
+                if ghost.cardinal == "West":
+                    ghost.move_east(settings)
+
+            if ghost.rect.right <= 0:
+                ghost.rect.left = 505
+            elif ghost.rect.left >= 505:
+                ghost.rect.right = 0
+
     def check_pac_conditions(self, pacman, settings):
 
+        self.check_ghost_conditions(settings)
+
         if pygame.sprite.spritecollideany(pacman, self.ghosts):
-            for _ in pygame.sprite.spritecollide(pacman, self.ghosts, True):  # TODO: This should eventually be false
+            pacman.reset()
+            if settings.lives_remaining > 0:
                 settings.lives_remaining -= 1
+            else:
+                settings.mode = "Menu"
+                settings.reset()
 
         if pygame.sprite.spritecollideany(pacman, self.pills):
             for _ in pygame.sprite.spritecollide(pacman, self.pills, True):
@@ -97,7 +123,7 @@ class Maze:
         elif pacman.rect.left >= 505:
             pacman.rect.right = 0
 
-    def blitme(self):
+    def blitme(self, settings):
         for brick in self.bricks:
             self.screen.blit(brick.image, brick.rect)
         for pill in self.pills:
@@ -106,4 +132,4 @@ class Maze:
             powerpill.animate()
             self.screen.blit(powerpill.image, powerpill.rect)
         for ghost in self.ghosts:
-            self.screen.blit(ghost.image, ghost.rect)
+            ghost.blitme(settings)

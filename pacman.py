@@ -14,6 +14,13 @@ class Pacman(Sprite):
         self.image_mode = 0
         self.rect = self.image.get_rect()
 
+        self.center = None
+        self.last_update_time = None
+        self.cardinal = None
+
+        self.reset()
+
+    def reset(self):
         self.rect.centerx = self.screen_rect.centerx
         self.rect.centery = 312
         self.center = float(self.rect.centerx)

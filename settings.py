@@ -15,3 +15,10 @@ class Settings:
         self.lives_remaining = 2
 
         self.fruit_remaining = 1
+
+        self.mode = "Game"  # Game | Menu
+
+    def reset(self):
+
+        self.lives_remaining = 2
+        self.score_current = 0
