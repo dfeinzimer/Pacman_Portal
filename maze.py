@@ -51,7 +51,7 @@ class Maze:
                     powerpill.rect.y = number_of_rows * dy
                     self.powerpills.add(powerpill)
 
-    def check_pac_collisions(self, pacman, settings):
+    def check_pac_conditions(self, pacman, settings):
 
         if pygame.sprite.spritecollideany(pacman, self.pills):
             for _ in pygame.sprite.spritecollide(pacman, self.pills, True):
@@ -75,10 +75,18 @@ class Maze:
             if pacman.cardinal == "West":
                 pacman.move_east(settings)
 
+        if pacman.rect.right <= 0:
+            pacman.rect.left = 505
+            print("Pacman spawn right")
+        elif pacman.rect.left >= 505:
+            pacman.rect.right = 0
+            print("Pacman spawn left")
+
     def blitme(self):
         for brick in self.bricks:
             self.screen.blit(brick.image, brick.rect)
         for pill in self.pills:
             self.screen.blit(pill.image, pill.rect)
         for powerpill in self.powerpills:
+            powerpill.animate()
             self.screen.blit(powerpill.image, powerpill.rect)

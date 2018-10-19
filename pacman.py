@@ -39,7 +39,6 @@ class Pacman(Sprite):
                 self.image = pygame.transform.rotate(self.image, 180)
                 self.move_west(settings)
 
-
         self.screen.blit(self.image, self.rect)
 
     def animate_mouth(self):

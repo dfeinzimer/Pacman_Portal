@@ -27,7 +27,7 @@ class Game:
         while not eloop.finished:
             eloop.check_events(self.pacman)
             self.update_screen()
-            self.maze.check_pac_collisions(self.pacman, self.settings)
+            self.maze.check_pac_conditions(self.pacman, self.settings)
 
     def update_screen(self):
         self.screen.fill((0, 0, 0))
