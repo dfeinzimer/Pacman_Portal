@@ -11,3 +11,7 @@ class Settings:
 
         self.screen_width = 505
         self.screen_height = 630  # Map stops at 560
+
+        self.lives_remaining = 2
+
+        self.fruit_remaining = 1
