@@ -3,6 +3,7 @@ from eventloop import EventLoop
 from maze import Maze
 from pacman import Pacman
 from settings import Settings
+from dashboard import Dashboard
 
 
 class Game:
@@ -19,6 +20,8 @@ class Game:
 
         self.pacman = Pacman(self.screen)
 
+        self.dashboard = Dashboard(self.screen)
+
     def __str__(self): return 'Game(Pacman Portal), maze=' + str(self.maze) + ')'
 
     def play(self):
@@ -32,6 +35,7 @@ class Game:
         self.screen.fill((0, 0, 0))
         self.maze.blitme()
         self.pacman.blitme(self.settings)
+        self.dashboard.blitme(self.settings)
         pygame.display.flip()
 
 
