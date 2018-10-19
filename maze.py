@@ -68,7 +68,7 @@ class Maze:
     def check_pac_conditions(self, pacman, settings):
 
         if pygame.sprite.spritecollideany(pacman, self.ghosts):
-            for _ in pygame.sprite.spritecollide(pacman, self.ghosts, True): # TODO: This should eventually be false
+            for _ in pygame.sprite.spritecollide(pacman, self.ghosts, True):  # TODO: This should eventually be false
                 settings.lives_remaining -= 1
 
         if pygame.sprite.spritecollideany(pacman, self.pills):
