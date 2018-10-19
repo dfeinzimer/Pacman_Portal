@@ -11,10 +11,9 @@ class Game:
 
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((505, 560))
-        pygame.display.set_caption("Pacman Portal")
-
         self.settings = Settings()
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
+        pygame.display.set_caption("Pacman Portal")
 
         self.maze = Maze(self.screen, mazefile='pacmap.txt')
 

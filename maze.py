@@ -76,7 +76,6 @@ class Maze:
                 settings.score_current += settings.pill_power_value
 
         if pygame.sprite.spritecollideany(pacman, self.bricks):
-            print("Collision")
             if pacman.cardinal == "North":
                 pacman.move_south(settings)
 
@@ -91,10 +90,8 @@ class Maze:
 
         if pacman.rect.right <= 0:
             pacman.rect.left = 505
-            print("Pacman spawn right")
         elif pacman.rect.left >= 505:
             pacman.rect.right = 0
-            print("Pacman spawn left")
 
     def blitme(self):
         for brick in self.bricks:

@@ -8,3 +8,6 @@ class Settings:
 
         self.pill_regular_value = 10
         self.pill_power_value = 100
+
+        self.screen_width = 505
+        self.screen_height = 630  # Map stops at 560
