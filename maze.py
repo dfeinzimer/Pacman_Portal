@@ -2,6 +2,7 @@ from pygame.sprite import Group
 from brick import Brick
 from pill import Pill
 from pill import PowerPill
+from ghost import Ghost
 import pygame
 
 
@@ -23,10 +24,23 @@ class Maze:
         self.bricks = Group()
         self.pills = Group()
         self.powerpills = Group()
+        self.ghosts = Group()
 
         self.build(screen)
 
+        self.spawn_ghosts()
+
     def __str__(self): return 'maze(' + self.filename + ')'
+
+    def spawn_ghosts(self):
+        inkey = Ghost(self.screen, -35, 260, 'images/ghost/inkey/inkey1.png')
+        self.ghosts.add(inkey)
+        pinky = Ghost(self.screen, 0, 260, 'images/ghost/pinky/pinky1.png')
+        self.ghosts.add(pinky)
+        blinky = Ghost(self.screen, 0, 204, 'images/ghost/blinky/blinky1.png')
+        self.ghosts.add(blinky)
+        clyde = Ghost(self.screen, 35, 260, 'images/ghost/clyde/clyde1.png')
+        self.ghosts.add(clyde)
 
     def build(self, screen):
         dx, dy = self.deltax, self.deltay
@@ -90,3 +104,5 @@ class Maze:
         for powerpill in self.powerpills:
             powerpill.animate()
             self.screen.blit(powerpill.image, powerpill.rect)
+        for ghost in self.ghosts:
+            self.screen.blit(ghost.image, ghost.rect)
