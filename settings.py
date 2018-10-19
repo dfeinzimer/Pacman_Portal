@@ -4,7 +4,7 @@ class Settings:
 
         self.score_current = 0
 
-        self.pacman_speed = 4
+        self.pacman_speed = 3
 
         self.pill_regular_value = 10
         self.pill_power_value = 100

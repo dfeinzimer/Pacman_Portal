@@ -11,7 +11,7 @@ class Maze:
         # Define maze screen
         self.screen = screen
 
-        self.SQUARE_SIZE = 10
+        self.SQUARE_SIZE = 11
 
         # Read maze layout
         self.filename = mazefile
@@ -51,7 +51,7 @@ class Maze:
                     powerpill.rect.y = number_of_rows * dy
                     self.powerpills.add(powerpill)
 
-    def check_pac_pills(self, pacman, settings):
+    def check_pac_collisions(self, pacman, settings):
 
         if pygame.sprite.spritecollideany(pacman, self.pills):
             for _ in pygame.sprite.spritecollide(pacman, self.pills, True):
@@ -60,6 +60,20 @@ class Maze:
         if pygame.sprite.spritecollideany(pacman, self.powerpills):
             for _ in pygame.sprite.spritecollide(pacman, self.powerpills, True):
                 settings.score_current += settings.pill_power_value
+
+        if pygame.sprite.spritecollideany(pacman, self.bricks):
+            print("Collision")
+            if pacman.cardinal == "North":
+                pacman.move_south(settings)
+
+            if pacman.cardinal == "South":
+                pacman.move_north(settings)
+
+            if pacman.cardinal == "East":
+                pacman.move_west(settings)
+
+            if pacman.cardinal == "West":
+                pacman.move_east(settings)
 
     def blitme(self):
         for brick in self.bricks:
