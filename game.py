@@ -24,6 +24,9 @@ class Game:
 
     def __str__(self): return 'Game(Pacman Portal), maze=' + str(self.maze) + ')'
 
+    def test(self):
+        pass
+
     def play(self):
         eloop = EventLoop(finished=False)
         while not eloop.finished:
