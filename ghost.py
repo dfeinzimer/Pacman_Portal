@@ -24,6 +24,16 @@ class Ghost(Sprite):
 
         self.current_destination = (10, 10)
 
+    def spawn_ghosts(self):
+        inkey = Ghost(self.screen, -35, 260, 'images/ghost/inkey/inkey1.png')
+        self.ghosts.add(inkey)
+        pinky = Ghost(self.screen, 0, 260, 'images/ghost/pinky/pinky1.png')
+        self.ghosts.add(pinky)
+        blinky = Ghost(self.screen, 0, 204, 'images/ghost/blinky/blinky1.png')
+        self.ghosts.add(blinky)
+        clyde = Ghost(self.screen, 35, 260, 'images/ghost/clyde/clyde1.png')
+        self.ghosts.add(clyde)
+
     def blitme(self, settings):
         if pygame.time.get_ticks() - self.last_update_time > 100:
             self.animate()
@@ -60,13 +70,17 @@ class Ghost(Sprite):
         self.last_update_time = pygame.time.get_ticks()
 
     def move_north(self, settings):
+        self.cardinal = "North"
         self.rect.y -= 1 * settings.pacman_speed
 
     def move_west(self, settings):
+        self.cardinal = "West"
         self.rect.x -= 1 * settings.pacman_speed
 
     def move_south(self, settings):
+        self.cardinal = "South"
         self.rect.y += 1 * settings.pacman_speed
 
     def move_east(self, settings):
+        self.cardinal = "East"
         self.rect.x += 1 * settings.pacman_speed

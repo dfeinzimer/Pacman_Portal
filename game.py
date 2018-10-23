@@ -13,6 +13,7 @@ class Game:
     def __init__(self):
         pygame.init()
         self.settings = Settings()
+        self.settings.reset()
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Pacman Portal")
 

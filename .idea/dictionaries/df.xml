@@ -1,6 +1,7 @@
 <component name="ProjectDictionaryState">
   <dictionary name="df">
     <words>
+      <w>blinky</w>
       <w>blit</w>
       <w>blitme</w>
       <w>brickfile</w>
@@ -11,6 +12,7 @@
       <w>eloop</w>
       <w>eventloop</w>
       <w>imagerect</w>
+      <w>inkey</w>
       <w>nrow</w>
       <w>pacfile</w>
       <w>pacman</w>

@@ -68,16 +68,14 @@ class Maze:
     def check_ghost_conditions(self, settings):
         for ghost in self.ghosts:
             if pygame.sprite.spritecollideany(ghost, self.bricks):
+                print("Ghost collision")
                 if ghost.cardinal == "North":
                     ghost.move_south(settings)
-
-                if ghost.cardinal == "South":
+                elif ghost.cardinal == "South":
                     ghost.move_north(settings)
-
-                if ghost.cardinal == "East":
+                elif ghost.cardinal == "East":
                     ghost.move_west(settings)
-
-                if ghost.cardinal == "West":
+                elif ghost.cardinal == "West":
                     ghost.move_east(settings)
 
             if ghost.rect.right <= 0:
