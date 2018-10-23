@@ -18,14 +18,14 @@ class Ghost(Sprite):
         self.center = float(self.rect.centerx)
         self.last_update_time = 0
         self.cardinal = "West"
-        self.current_destination = (10, 10)
+        self.current_destination_x = 10
+        self.current_destination_y = 10
 
     def __str__(self):
         return self.name
 
     def adjust(self, pacman):
         if self.name == "Blinky":
-            print("I'm blinky")
             if self.rect.centery < pacman.rect.centery:
                 self.cardinal = "South"
             elif self.rect.centery > pacman.rect.centery:
@@ -33,6 +33,15 @@ class Ghost(Sprite):
             elif self.rect.centerx > pacman.rect.centerx:
                 self.cardinal = "West"
             elif self.rect.centerx < pacman.rect.centerx:
+                self.cardinal = "East"
+        if self.name == "Pinky":
+            if self.rect.centery < self.current_destination_y:
+                self.cardinal = "South"
+            elif self.rect.centery > self.current_destination_y:
+                self.cardinal = "North"
+            elif self.rect.centerx > self.current_destination_x:
+                self.cardinal = "West"
+            elif self.rect.centerx < self.current_destination_x:
                 self.cardinal = "East"
 
     def blitme(self, settings):
