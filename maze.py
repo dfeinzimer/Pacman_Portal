@@ -65,10 +65,10 @@ class Maze:
                     powerpill.rect.y = number_of_rows * dy
                     self.powerpills.add(powerpill)
 
-    def check_ghost_conditions(self, settings, pacman):
+    def check_ghost_conditions(self, pacman):
         for ghost in self.ghosts:
             if pygame.sprite.spritecollideany(ghost, self.bricks):
-                ghost.adjust()
+                ghost.adjust(pacman)
                 '''
                 if ghost.cardinal == "North":
                     ghost.move_south(settings)
@@ -87,7 +87,7 @@ class Maze:
 
     def check_pac_conditions(self, pacman, settings):
 
-        self.check_ghost_conditions(settings, pacman)
+        self.check_ghost_conditions(pacman)
 
         if pygame.sprite.spritecollideany(pacman, self.ghosts):
             pacman.reset()

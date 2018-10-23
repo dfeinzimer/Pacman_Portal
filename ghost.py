@@ -23,9 +23,17 @@ class Ghost(Sprite):
     def __str__(self):
         return self.name
 
-    def adjust(self):
+    def adjust(self, pacman):
         if self.name == "Blinky":
             print("I'm blinky")
+            if self.rect.centery < pacman.rect.centery:
+                self.cardinal = "South"
+            elif self.rect.centery > pacman.rect.centery:
+                self.cardinal = "North"
+            elif self.rect.centerx > pacman.rect.centerx:
+                self.cardinal = "West"
+            elif self.rect.centerx < pacman.rect.centerx:
+                self.cardinal = "East"
 
     def blitme(self, settings):
         if pygame.time.get_ticks() - self.last_update_time > 100:
