@@ -9,7 +9,6 @@ class Dashboard:
         pygame.font.init()
 
         self.score_font = pygame.font.SysFont('tlwgtypo', 30)
-        print(pygame.font.get_fonts())
         self.scorelabel = self.score_font.render('SCORE:', False, (255, 255, 255))
         self.currentscore = self.score_font.render('0', False, (255, 255, 0))
         self.liveslabel = self.score_font.render('LIVES:', False, (255, 255, 255))

@@ -4,35 +4,28 @@ import pygame
 
 class Ghost(Sprite):
 
-    def __init__(self, screen, x_offset, y_offset, file):
+    def __init__(self, screen, x_offset, y_offset, file, name):
         super(Ghost, self).__init__()
         self.screen = screen
         self.screen_rect = screen.get_rect()
         self.size = 30
-
         self.image = pygame.image.load(file)
         self.image_mode = 0
+        self.name = name
         self.rect = self.image.get_rect()
-
         self.rect.centerx = self.screen_rect.centerx + x_offset
         self.rect.centery = y_offset
         self.center = float(self.rect.centerx)
-
         self.last_update_time = 0
-
         self.cardinal = "West"
-
         self.current_destination = (10, 10)
 
-    def spawn_ghosts(self):
-        inkey = Ghost(self.screen, -35, 260, 'images/ghost/inkey/inkey1.png')
-        self.ghosts.add(inkey)
-        pinky = Ghost(self.screen, 0, 260, 'images/ghost/pinky/pinky1.png')
-        self.ghosts.add(pinky)
-        blinky = Ghost(self.screen, 0, 204, 'images/ghost/blinky/blinky1.png')
-        self.ghosts.add(blinky)
-        clyde = Ghost(self.screen, 35, 260, 'images/ghost/clyde/clyde1.png')
-        self.ghosts.add(clyde)
+    def __str__(self):
+        return self.name
+
+    def adjust(self):
+        if self.name == "Blinky":
+            print("I'm blinky")
 
     def blitme(self, settings):
         if pygame.time.get_ticks() - self.last_update_time > 100:

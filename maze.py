@@ -33,13 +33,13 @@ class Maze:
     def __str__(self): return 'maze(' + self.filename + ')'
 
     def spawn_ghosts(self):
-        inkey = Ghost(self.screen, -35, 260, 'images/ghost/inkey/inkey1.png')
+        inkey = Ghost(self.screen, -35, 260, 'images/ghost/inkey/inkey1.png', "Inkey")
         self.ghosts.add(inkey)
-        pinky = Ghost(self.screen, 0, 260, 'images/ghost/pinky/pinky1.png')
+        pinky = Ghost(self.screen, 0, 260, 'images/ghost/pinky/pinky1.png', "Pinky")
         self.ghosts.add(pinky)
-        blinky = Ghost(self.screen, 0, 204, 'images/ghost/blinky/blinky1.png')
+        blinky = Ghost(self.screen, 0, 204, 'images/ghost/blinky/blinky1.png', "Blinky")
         self.ghosts.add(blinky)
-        clyde = Ghost(self.screen, 35, 260, 'images/ghost/clyde/clyde1.png')
+        clyde = Ghost(self.screen, 35, 260, 'images/ghost/clyde/clyde1.png', "Clyde")
         self.ghosts.add(clyde)
 
     def build(self, screen):
@@ -65,10 +65,11 @@ class Maze:
                     powerpill.rect.y = number_of_rows * dy
                     self.powerpills.add(powerpill)
 
-    def check_ghost_conditions(self, settings):
+    def check_ghost_conditions(self, settings, pacman):
         for ghost in self.ghosts:
             if pygame.sprite.spritecollideany(ghost, self.bricks):
-                print("Ghost collision")
+                ghost.adjust()
+                '''
                 if ghost.cardinal == "North":
                     ghost.move_south(settings)
                 elif ghost.cardinal == "South":
@@ -77,6 +78,7 @@ class Maze:
                     ghost.move_west(settings)
                 elif ghost.cardinal == "West":
                     ghost.move_east(settings)
+                '''
 
             if ghost.rect.right <= 0:
                 ghost.rect.left = 505
@@ -85,7 +87,7 @@ class Maze:
 
     def check_pac_conditions(self, pacman, settings):
 
-        self.check_ghost_conditions(settings)
+        self.check_ghost_conditions(settings, pacman)
 
         if pygame.sprite.spritecollideany(pacman, self.ghosts):
             pacman.reset()
