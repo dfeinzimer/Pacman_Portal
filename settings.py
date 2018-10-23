@@ -4,7 +4,8 @@ class Settings:
         self.fruit_remaining = None
         self.lives_remaining = None
         self.mode = None  # Game | Menu
-        self.pacman_speed = None
+        self.speed_ghost = None
+        self.speed_pacman = None
         self.pill_regular_value = None
         self.pill_power_value = None
         self.score_current = None
@@ -14,8 +15,9 @@ class Settings:
     def reset(self):
         self.fruit_remaining = 1
         self.lives_remaining = 2
-        self.mode = "Game"  # Game | Menu
-        self.pacman_speed = 3
+        self.mode = "Game"  # Game || Menu || Intro
+        self.speed_ghost = 2
+        self.speed_pacman = 3
         self.pill_regular_value = 10
         self.pill_power_value = 100
         self.score_current = 0

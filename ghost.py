@@ -18,8 +18,8 @@ class Ghost(Sprite):
         self.center = float(self.rect.centerx)
         self.last_update_time = 0
         self.cardinal = "West"
-        self.current_destination_x = 10
-        self.current_destination_y = 10
+        self.current_destination_x = 26
+        self.current_destination_y = 26
 
     def __str__(self):
         return self.name
@@ -81,16 +81,16 @@ class Ghost(Sprite):
 
     def move_north(self, settings):
         self.cardinal = "North"
-        self.rect.y -= 1 * settings.pacman_speed
+        self.rect.y -= 1 * settings.speed_ghost
 
     def move_west(self, settings):
         self.cardinal = "West"
-        self.rect.x -= 1 * settings.pacman_speed
+        self.rect.x -= 1 * settings.speed_ghost
 
     def move_south(self, settings):
         self.cardinal = "South"
-        self.rect.y += 1 * settings.pacman_speed
+        self.rect.y += 1 * settings.speed_ghost
 
     def move_east(self, settings):
         self.cardinal = "East"
-        self.rect.x += 1 * settings.pacman_speed
+        self.rect.x += 1 * settings.speed_ghost

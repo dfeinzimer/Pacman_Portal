@@ -65,13 +65,13 @@ class Pacman(Sprite):
         self.last_update_time = pygame.time.get_ticks()
 
     def move_north(self, settings):
-        self.rect.y -= 1 * settings.pacman_speed
+        self.rect.y -= 1 * settings.speed_pacman
 
     def move_west(self, settings):
-        self.rect.x -= 1 * settings.pacman_speed
+        self.rect.x -= 1 * settings.speed_pacman
 
     def move_south(self, settings):
-        self.rect.y += 1 * settings.pacman_speed
+        self.rect.y += 1 * settings.speed_pacman
 
     def move_east(self, settings):
-        self.rect.x += 1 * settings.pacman_speed
+        self.rect.x += 1 * settings.speed_pacman
