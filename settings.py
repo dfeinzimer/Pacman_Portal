@@ -16,7 +16,7 @@ class Settings:
     def reset(self):
         self.fruit_remaining = 1
         self.lives_remaining = 2
-        self.max_intro_lifetime = None
+        self.max_intro_lifetime = 5000
         self.mode = "Game"  # Game || Menu || Intro
         self.speed_ghost = 2
         self.speed_pacman = 3

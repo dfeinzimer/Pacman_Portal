@@ -15,8 +15,8 @@ class Game:
         pygame.init()
         self.settings = Settings()
         self.settings.reset()
-        self.intro = Intro(self.settings)
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
+        self.intro = Intro(self.screen, self.settings)
         pygame.display.set_caption("Pacman Portal")
 
         self.maze = Maze(self.screen, mazefile='pacmap.txt')
@@ -43,7 +43,7 @@ class Game:
         elif self.settings.mode == "Menu":
             pass
         elif self.settings.mode == "Intro":
-            pass
+            self.intro.blitme()
         pygame.display.flip()
 
 

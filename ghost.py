@@ -24,7 +24,7 @@ class Ghost(Sprite):
     def __str__(self):
         return self.name
 
-    def adjust(self, pacman):
+    def adjust(self, pacman):  # TODO Refactor to 'AI'
         if self.name == "Blinky":
             if self.rect.centery < pacman.rect.centery:
                 self.cardinal = "South"
@@ -49,17 +49,15 @@ class Ghost(Sprite):
             self.animate()
             # Update cardinal orientation
             if self.cardinal == "North":
-                # self.image = pygame.transform.rotate(self.image, 90)
                 self.move_north(settings)
             elif self.cardinal == "East":
-                # self.image = pygame.transform.rotate(self.image, 0)
                 self.move_east(settings)
             elif self.cardinal == "South":
-                # self.image = pygame.transform.rotate(self.image, 270)
                 self.move_south(settings)
             elif self.cardinal == "West":
-                # self.image = pygame.transform.rotate(self.image, 180)
                 self.move_west(settings)
+            elif self.cardinal == "Stopped":
+                self.move_stop()
 
         self.screen.blit(self.image, self.rect)
 
@@ -94,3 +92,8 @@ class Ghost(Sprite):
     def move_east(self, settings):
         self.cardinal = "East"
         self.rect.x += 1 * settings.speed_ghost
+
+    def move_stop(self):
+        self.cardinal = "Stopped"
+        self.rect.x += 0
+        self.rect.y += 0
