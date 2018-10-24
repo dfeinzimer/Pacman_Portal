@@ -3,6 +3,7 @@ class Settings:
     def __init__(self) -> object:
         self.fruit_remaining = None
         self.lives_remaining = None
+        self.max_intro_lifetime = None
         self.mode = None  # Game | Menu
         self.speed_ghost = None
         self.speed_pacman = None
@@ -15,6 +16,7 @@ class Settings:
     def reset(self):
         self.fruit_remaining = 1
         self.lives_remaining = 2
+        self.max_intro_lifetime = None
         self.mode = "Game"  # Game || Menu || Intro
         self.speed_ghost = 2
         self.speed_pacman = 3
