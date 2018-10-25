@@ -31,6 +31,9 @@ class Game:
         self.portal_enter = Portal("Enter", self.screen, self.settings)
         self.portal_exit = Portal("Exit", self.screen, self.settings)
 
+        scoresheet = open('scoresheet.txt', 'r')
+        self.settings.score_high = int(scoresheet.read())
+
     def __str__(self): return 'Game(Pacman Portal), maze=' + str(self.maze) + ')'
 
     def play(self):

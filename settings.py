@@ -15,6 +15,7 @@ class Settings:
         self.portal_enter_active = None
         self.portal_exit_active = None
         self.score_current = None
+        self.score_high = None
         self.screen_height = None
         self.screen_width = None
 
@@ -33,5 +34,6 @@ class Settings:
         self.portal_enter_active = False
         self.portal_exit_active = False
         self.score_current = 0
+        self.score_high = 0
         self.screen_height = 630  # Map stops at 560
         self.screen_width = 505

@@ -15,11 +15,11 @@ class Menu:
 
     def check_events(self, mouse_x, mouse_y):
         button_play_clicked = self.button_play.rect.collidepoint(mouse_x, mouse_y)
-        button_hiscores_clicked = self.button_play.rect.collidepoint(mouse_x, mouse_y)
+        button_hiscores_clicked = self.button_hiscores.rect.collidepoint(mouse_x, mouse_y)
         if button_play_clicked:
             self.settings.mode = "Game"
         elif button_hiscores_clicked:
-            pass
+            print(self.settings.score_high)
 
     def blitme(self):
         self.screen.blit(self.GameTitle, (130, 90))

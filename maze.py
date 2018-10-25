@@ -107,10 +107,12 @@ class Maze:
         if pygame.sprite.spritecollideany(pacman, self.pills):
             for _ in pygame.sprite.spritecollide(pacman, self.pills, True):
                 settings.score_current += settings.pill_regular_value
+                self.check_high_score(settings)
 
         if pygame.sprite.spritecollideany(pacman, self.powerpills):
             for _ in pygame.sprite.spritecollide(pacman, self.powerpills, True):
                 settings.score_current += settings.pill_power_value
+                self.check_high_score(settings)
 
         if pygame.sprite.spritecollideany(pacman, self.bricks):
             if pacman.cardinal == "North":
@@ -140,3 +142,11 @@ class Maze:
             self.screen.blit(powerpill.image, powerpill.rect)
         for ghost in self.ghosts:
             ghost.blitme(settings)
+
+    def check_high_score(self, settings):
+        """Check to see if there's a new high score."""
+        if settings.score_current > settings.score_high:
+            settings.score_high = settings.score_current
+            scoresheet = open('scoresheet.txt', 'w')
+            scoresheet.write(str(settings.score_high))
+            scoresheet.close()
