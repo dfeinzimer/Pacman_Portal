@@ -69,17 +69,6 @@ class Maze:
         for ghost in self.ghosts:
             if pygame.sprite.spritecollideany(ghost, self.bricks):
                 ghost.adjust(pacman)
-                '''
-                if ghost.cardinal == "North":
-                    ghost.move_south(settings)
-                elif ghost.cardinal == "South":
-                    ghost.move_north(settings)
-                elif ghost.cardinal == "East":
-                    ghost.move_west(settings)
-                elif ghost.cardinal == "West":
-                    ghost.move_east(settings)
-                '''
-
             if ghost.rect.right <= 0:
                 ghost.rect.left = 505
             elif ghost.rect.left >= 505:
@@ -143,7 +132,8 @@ class Maze:
         for ghost in self.ghosts:
             ghost.blitme(settings)
 
-    def check_high_score(self, settings):
+    @staticmethod
+    def check_high_score(settings):
         """Check to see if there's a new high score."""
         if settings.score_current > settings.score_high:
             settings.score_high = settings.score_current
