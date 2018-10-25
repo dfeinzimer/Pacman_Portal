@@ -11,7 +11,8 @@ class EventLoop:
         return 'eventloop, finished=' + str(self.finished) + ')'
 
     @staticmethod
-    def check_events(pacman):
+    def check_events(pacman, menu):
+        menu = menu
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -24,3 +25,6 @@ class EventLoop:
                     pacman.cardinal = "North"
                 elif event.key == pygame.K_DOWN:
                     pacman.cardinal = "South"
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                menu.check_events(mouse_x, mouse_y)

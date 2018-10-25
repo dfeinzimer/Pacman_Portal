@@ -4,6 +4,7 @@ import pygame
 
 class Intro:
     def __init__(self, screen, settings):
+        pygame.font.init()
         self.screen = screen
         self.settings = settings
         self.settings.mode = "Intro"
@@ -14,7 +15,7 @@ class Intro:
 
     def blitme(self):
         if pygame.time.get_ticks() > self.settings.max_intro_lifetime:
-            self.settings.mode = "Game"
+            self.settings.mode = "Menu"
         if pygame.time.get_ticks() > .75 * self.settings.max_intro_lifetime:
             self.inkey.cardinal = "Stopped"
             self.pinky.cardinal = "Stopped"
