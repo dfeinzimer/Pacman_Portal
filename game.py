@@ -4,6 +4,7 @@ from intro import Intro
 from maze import Maze
 from menu import Menu
 from pacman import Pacman
+from portal import Portal
 from settings import Settings
 import pygame
 
@@ -27,12 +28,15 @@ class Game:
 
         self.dashboard = Dashboard(self.screen)
 
+        self.portal_enter = Portal("Enter", self.screen, self.settings)
+        self.portal_exit = Portal("Exit", self.screen, self.settings)
+
     def __str__(self): return 'Game(Pacman Portal), maze=' + str(self.maze) + ')'
 
     def play(self):
         eloop = EventLoop(finished=False)
         while not eloop.finished:
-            eloop.check_events(self.pacman, self.menu)
+            eloop.check_events(self.pacman, self.menu, self.portal_enter, self.portal_exit, self.settings)
             self.update_screen()
 
     def update_screen(self):
@@ -42,6 +46,8 @@ class Game:
             self.maze.blitme(self.settings)
             self.pacman.blitme(self.settings)
             self.dashboard.blitme(self.settings)
+            self.portal_enter.blitme()
+            self.portal_exit.blitme()
         elif self.settings.mode == "Menu":
             self.menu.blitme()
             pass
