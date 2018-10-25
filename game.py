@@ -42,7 +42,7 @@ class Game:
     def update_screen(self):
         self.screen.fill((0, 0, 0))
         if self.settings.mode == "Game":
-            self.maze.check_pac_conditions(self.pacman, self.settings)
+            self.maze.check_pac_conditions(self.pacman, self.settings, self.portal_enter, self.portal_exit)
             self.maze.blitme(self.settings)
             self.pacman.blitme(self.settings)
             self.dashboard.blitme(self.settings)

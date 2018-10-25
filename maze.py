@@ -85,7 +85,7 @@ class Maze:
             elif ghost.rect.left >= 505:
                 ghost.rect.right = 0
 
-    def check_pac_conditions(self, pacman, settings):
+    def check_pac_conditions(self, pacman, settings, portal_enter, portal_exit):
 
         self.check_ghost_conditions(pacman)
 
@@ -96,6 +96,13 @@ class Maze:
             else:
                 settings.mode = "Menu"
                 settings.reset()
+
+        if pygame.sprite.collide_rect(pacman, portal_exit):
+            if pygame.time.get_ticks() - portal_exit.time_set_active > 1000:
+                pacman.rect.x = portal_enter.rect.x
+                pacman.rect.y = portal_enter.rect.y
+                settings.portal_enter_active = False
+                settings.portal_exit_active = False
 
         if pygame.sprite.spritecollideany(pacman, self.pills):
             for _ in pygame.sprite.spritecollide(pacman, self.pills, True):

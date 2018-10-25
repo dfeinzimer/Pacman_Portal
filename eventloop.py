@@ -16,6 +16,9 @@ class EventLoop:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                menu.check_events(mouse_x, mouse_y)
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
                     pacman.cardinal = "East"
@@ -33,6 +36,3 @@ class EventLoop:
                     if not settings.portal_exit_active:
                         portal_exit.attempt_spawn(pacman)
                         break
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                mouse_x, mouse_y = pygame.mouse.get_pos()
-                menu.check_events(mouse_x, mouse_y)

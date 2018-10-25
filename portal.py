@@ -19,6 +19,7 @@ class Portal(Sprite):
         self.center = None
         self.last_update_time = None
         self.cardinal = None
+        self.time_set_active = None
 
     def __str__(self):
         return 'Portal: ' + str(self.portal_type)
@@ -26,11 +27,13 @@ class Portal(Sprite):
     def attempt_spawn(self, pacman):
         if not self.settings.portal_enter_active:
             self.settings.portal_enter_active = True
+            self.time_set_active = pygame.time.get_ticks()
             self.rect.x = pacman.rect.x
             self.rect.y = pacman.rect.y
             return
         elif self.settings.portal_exit_active == False and self.settings.portal_enter_active == True:
             self.settings.portal_exit_active = True
+            self.time_set_active = pygame.time.get_ticks()
             self.rect.x = pacman.rect.x
             self.rect.y = pacman.rect.y
             return
